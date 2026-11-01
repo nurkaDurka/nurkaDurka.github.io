@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { FaAngleLeft, FaAngleRight, FaAngleDown, FaMagnifyingGlass } from "react-icons/fa6";
-import { menuItems, dashboardSections } from "../../assets/data/Sidebar";
+import { sidebarMenuItems, sidebarSections } from "../../assets/data/Sidebar";
 
-export default function Dashboard() {
+export default function Sidebar() {
     const [activeMenu, setActiveMenu] = useState("Dashboard");
     const [reduce, setReduce] = useState(false);
     const [openItems, setOpenItems] = useState(new Set());
 
-    const sections = dashboardSections[activeMenu] || [];
+    const sections = sidebarSections[activeMenu] || [];
     const handleReduce = () => { setReduce((prev) => !prev); };
 
     const toggleItem = (itemKey) => {
@@ -58,12 +58,10 @@ export default function Dashboard() {
     };
 
     return (
-        <div className="dashboard">
-            <div className="dashboard__menu">
-
-                {/* TOP MENU */}
-                <div className="dashboard__menu__icons">
-                    {menuItems
+        <div className="sidebar">
+            <div className="sidebar__menu">
+                <div className="sidebar__menu__icons">
+                    {sidebarMenuItems
                         .filter((item) => !["Settings", "Admin"].includes(item.label))
                         .map((item) => {
                             const Icon = item.icon;
@@ -71,7 +69,7 @@ export default function Dashboard() {
                             return (
                                 <div
                                     key={item.id}
-                                    className={`dashboard__menu__items ${activeMenu === item.label ? "active" : ""
+                                    className={`sidebar__menu__items ${activeMenu === item.label ? "active" : ""
                                         }`}
                                     title={item.label}
                                     onClick={() => {
@@ -85,10 +83,10 @@ export default function Dashboard() {
                         })}
                 </div>
 
-                <div className="dashboard__menu__bottom">
+                <div className="sidebar__menu__bottom">
 
                     <button
-                        className="dashboard__toggle"
+                        className="sidebar__toggle"
                         onClick={handleReduce}
                         aria-label={reduce ? "Expand sidebar" : "Collapse sidebar"}
                         title={reduce ? "Expand sidebar" : "Collapse sidebar"}
@@ -106,7 +104,7 @@ export default function Dashboard() {
                         </motion.span>
                     </button>
 
-                    {menuItems
+                    {sidebarMenuItems
                         .filter((item) => ["Settings", "Admin"].includes(item.label))
                         .map((item) => {
                             const Icon = item.icon;
@@ -114,7 +112,7 @@ export default function Dashboard() {
                             return (
                                 <div
                                     key={item.id}
-                                    className={`dashboard__menu__items ${activeMenu === item.label ? "active" : ""}`}
+                                    className={`sidebar__menu__items ${activeMenu === item.label ? "active" : ""}`}
                                     title={item.label}
                                     onClick={() => {
                                         setActiveMenu(item.label);
@@ -130,24 +128,24 @@ export default function Dashboard() {
             </div>
 
             <motion.div
-                className="dashboard__info"
+                className="sidebar__info"
                 variants={panelVariants}
                 initial="visible"
                 animate={reduce ? "hidden" : "visible"}
             >
-                <div className="dashboard__info__header">
-                    <p className="dashboard__info__title">{activeMenu}</p>
+                <div className="sidebar__info__header">
+                    <p className="sidebar__info__title">{activeMenu}</p>
 
-                    <div className="dashboard__search">
+                    <div className="sidebar__search">
                         <FaMagnifyingGlass />
                         <input type="text" placeholder="Search tasks, projects" />
                     </div>
                 </div>
 
-                <div className="dashboard__info__content">
+                <div className="sidebar__info__content">
                     {sections.map((section) => (
-                        <div className="dashboard__info__block" key={section.title}>
-                            <h2 className="dashboard__info__block__title">
+                        <div className="sidebar__info__block" key={section.title}>
+                            <h2 className="sidebar__info__block__title">
                                 {section.title}
                             </h2>
 
@@ -159,13 +157,13 @@ export default function Dashboard() {
                                 const isOpen = openItems.has(itemKey);
 
                                 return (
-                                    <div className="dashboard__info__item-wrapper" key={itemKey}>
-                                        <button type="button" className={`dashboard__info__block__item ${isOpen ? "expanded" : ""}`} onClick={() => { if (hasContent) { toggleItem(itemKey); } }} aria-expanded={hasContent ? isOpen : undefined}>
+                                    <div className="sidebar__info__item-wrapper" key={itemKey}>
+                                        <button type="button" className={`sidebar__info__block__item ${isOpen ? "expanded" : ""}`} onClick={() => { if (hasContent) { toggleItem(itemKey); } }} aria-expanded={hasContent ? isOpen : undefined}>
                                             <Icon />
                                             <span>{item.label}</span>
                                             {hasContent && (
                                                 <motion.div
-                                                    className="dashboard__info__item-arrow"
+                                                    className="sidebar__info__item-arrow"
                                                     animate={{ rotate: isOpen ? 180 : 0 }}
                                                     transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                                                 >
@@ -177,16 +175,16 @@ export default function Dashboard() {
                                         <AnimatePresence initial={false}>
                                             {hasContent && isOpen && (
                                                 <motion.div
-                                                    className="dashboard__info__nested"
+                                                    className="sidebar__info__nested"
                                                     initial={{ height: 0, opacity: 0, y: -5 }}
                                                     animate={{ height: "auto", opacity: 1, y: 0 }}
                                                     exit={{ height: 0, opacity: 0, y: -5 }}
                                                     transition={{ height: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.2 }, y: { duration: 0.25 } }}
                                                 >
-                                                    <div className="dashboard__info__nested-inner">
+                                                    <div className="sidebar__info__nested-inner">
                                                         {item.content.map((contentItem, index) => (
-                                                            <button type="button" className="dashboard__info__nested-item" key={index}>
-                                                                <span className="dashboard__info__nested-dot" />
+                                                            <button type="button" className="sidebar__info__nested-item" key={index}>
+                                                                <span className="sidebar__info__nested-dot" />
                                                                 <span>{contentItem}</span>
                                                             </button>
                                                         ))}
