@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { FaAngleLeft, FaAngleRight, FaAngleDown, FaMagnifyingGlass } from "react-icons/fa6";
-import { menuItems, dashboardSections } from "../../source/data/Dashboard";
+import { menuItems, dashboardSections } from "../../assets/data/Sidebar";
 
 export default function Dashboard() {
     const [activeMenu, setActiveMenu] = useState("Dashboard");
