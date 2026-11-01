@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { menuItems, dashboardSections } from "../../source/data/Dashboard";
+import { FaSearch } from "react-icons/fa";
 
 export default function Dashboard() {
     const [activeMenu, setActiveMenu] = useState("Dashboard");
@@ -118,6 +119,15 @@ export default function Dashboard() {
                     <p className="dashboard__info__title">
                         {activeMenu}
                     </p>
+
+                    <div className="dashboard__search">
+                        <FaSearch />
+
+                        <input
+                            type="text"
+                            placeholder="Search tasks, projects"
+                        />
+                    </div>
                 </div>
 
                 <div className="dashboard__info__content">
