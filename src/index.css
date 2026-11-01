@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* ==============================
+   VARIABLES
+============================== */
+
+:root {
+    --black: #000000;
+    --dark: #252525;
+    --text-color: #a0a0a0;
+    --white: #f5f5f5;
+
+    --hover: #242424;
+    --border: #252525;
+    --bg-color: #1b1b1b;
+    --active: #292929;
+
+    --sidebar-width: 56px;
+    --sidebar-item-size: 36px;
+    --info-width: 312px;
+
+    --font-title: 20px;
+    --font-section: 16px;
+    --font-item: 14px;
+    --font-icon: 18px;
+}
+
+/* ==============================
+   GLOBAL
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg-color);
+    color: var(--white);
+}
+
+button {
+    font-family: inherit;
+}
+
+/* ==============================
+   DASHBOARD
+============================== */
+
+.dashboard {
+    display: flex;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+    background: var(--bg-color);
+}
+
+/* ==============================
+   LEFT SIDEBAR
+============================== */
+
+.dashboard__menu {
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 0;
+
+    flex-shrink: 0;
+    z-index: 10;
+
+    border-right: 1px solid var(--border);
+}
+
+/* ==============================
+   SIDEBAR ICONS
+============================== */
+
+.dashboard__menu__icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.dashboard__menu__items {
+    width: var(--sidebar-item-size);
+    height: var(--sidebar-item-size);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text-color);
+
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.dashboard__menu__items svg {
+    width: var(--font-icon);
+    height: var(--font-icon);
+}
+
+.dashboard__menu__items:hover {
+    color: var(--white);
+    background: var(--hover);
+}
+
+.dashboard__menu__items:active {
+    transform: scale(0.94);
+}
+
+.dashboard__menu__items.active {
+    color: var(--white);
+    background: var(--active);
+}
+
+/* ==============================
+   TOGGLE BUTTON
+============================== */
+
+.dashboard__toggle {
+    width: var(--sidebar-item-size);
+    height: var(--sidebar-item-size);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: auto;
+    padding: 0;
+
+    color: var(--text-color);
+    background: transparent;
+
+    border: none;
+    outline: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+    flex-shrink: 0;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.dashboard__toggle:hover {
+    color: var(--white);
+    background: var(--hover);
+}
+
+.dashboard__toggle:active {
+    transform: scale(0.94);
+}
+
+.dashboard__toggle span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard__toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ==============================
+   INFO PANEL
+============================== */
+
+.dashboard__info {
+    box-sizing: border-box;
+
+    width: var(--info-width);
+    min-width: var(--info-width);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 24px 16px;
+
+    overflow: hidden;
+    white-space: nowrap;
+
+    border-right: 1px solid var(--border);
+
+    flex-shrink: 0;
+
+    will-change:
+        width,
+        min-width,
+        transform,
+        opacity;
+}
+
+/* ==============================
+   INFO HEADER
+============================== */
+
+.dashboard__info__header {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 28px;
+}
+
+.dashboard__info__title {
+    margin: 0;
+
+    color: var(--white);
+
+    font-size: var(--font-title);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* ==============================
+   INFO CONTENT
+============================== */
+
+.dashboard__info__content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 28px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Scrollbar */
+
+.dashboard__info__content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dashboard__info__content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dashboard__info__content::-webkit-scrollbar-thumb {
+    background: #383838;
+    border-radius: 10px;
+}
+
+/* ==============================
+   SECTIONS
+============================== */
+
+.dashboard__info__block {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.dashboard__info__block__title {
+    margin: 0 0 8px 0;
+
+    color: #777777;
+
+    font-size: var(--font-section);
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+/* ==============================
+   SECTION ITEMS
+============================== */
+
+.dashboard__info__block__item {
+    width: 100%;
+    min-height: 38px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 10px;
+
+    color: var(--text-color);
+
+    border-radius: 7px;
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.dashboard__info__block__item:hover {
+    color: var(--white);
+    background: var(--hover);
+}
+
+.dashboard__info__block__item svg {
+    width: 16px;
+    height: 16px;
+
+    flex-shrink: 0;
+}
+
+.dashboard__info__block__item p {
+    margin: 0;
+
+    font-size: var(--font-item);
+    font-weight: 500;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 600px) {
+    :root {
+        --sidebar-width: 48px;
+        --sidebar-item-size: 34px;
+        --info-width: 260px;
+
+        --font-title: 18px;
+        --font-section: 15px;
+        --font-item: 13px;
+    }
+
+    .dashboard__menu {
+        padding: 12px 0;
+    }
+
+    .dashboard__menu__icons {
+        gap: 6px;
+    }
+
+    .dashboard__info {
+        padding: 20px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
