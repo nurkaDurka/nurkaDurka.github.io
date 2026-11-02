@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import "./Sidebar.css";
-import { FaAngleDown, } from "react-icons/fa6";
+import { FaAngleDown } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import { sidebarMenuItems, sidebarSections } from "@/assets/data/Sidebar";
 
@@ -44,7 +44,12 @@ export default function Sidebar({ activePage, onChangePage, reduce }) {
                     {sidebarMenuItems.map((item) => {
                         const IconComponent = item.icon;
                         return (
-                            <button key={item.id} className={`sidebar__menu-item ${activePage === item.label ? "active" : ""}`} onClick={() => onChangePage(item.label)} title={item.label}>
+                            <button
+                                key={item.id}
+                                className={`sidebar__menu-item ${activePage === item.label ? "active" : ""}`}
+                                onClick={() => onChangePage(item.label)}
+                                title={item.label}
+                            >
                                 {IconComponent && <IconComponent />}
                             </button>
                         );
@@ -52,7 +57,12 @@ export default function Sidebar({ activePage, onChangePage, reduce }) {
                 </div>
             </div>
 
-            <motion.aside className="sidebar__info" variants={sidebarVariants} animate={reduce ? "collapsed" : "expanded"} initial={false}>
+            <motion.aside
+                className="sidebar__info"
+                variants={sidebarVariants}
+                animate={reduce ? "collapsed" : "expanded"}
+                initial="collapsed"
+            >
                 <div className="sidebar__inner">
                     <div className="sidebar__header">
                         <div className="sidebar__title">{activePage}</div>
@@ -72,7 +82,10 @@ export default function Sidebar({ activePage, onChangePage, reduce }) {
 
                                         return (
                                             <div className="sidebar__item-wrapper" key={item.label}>
-                                                <button className={`sidebar__item ${openItems[item.label] ? "opened" : ""}`} onClick={() => hasChildren ? toggleItem(item.label) : null}>
+                                                <button
+                                                    className={`sidebar__item ${openItems[item.label] ? "opened" : ""}`}
+                                                    onClick={() => hasChildren ? toggleItem(item.label) : null}
+                                                >
                                                     <span className="sidebar__item-content-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                                         {ItemIcon && <ItemIcon />}
                                                         <span className="sidebar__item-name">{item.label}</span>
@@ -83,7 +96,13 @@ export default function Sidebar({ activePage, onChangePage, reduce }) {
 
                                                 <AnimatePresence initial={false}>
                                                     {hasChildren && openItems[item.label] && (
-                                                        <motion.div className="sidebar__subitems" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2, ease: "easeInOut" }}>
+                                                        <motion.div
+                                                            className="sidebar__subitems"
+                                                            initial={{ height: 0, opacity: 0 }}
+                                                            animate={{ height: "auto", opacity: 1 }}
+                                                            exit={{ height: 0, opacity: 0 }}
+                                                            transition={{ duration: 0.2, ease: "easeInOut" }}
+                                                        >
                                                             {item.content.map((childText, childIdx) => (
                                                                 <button key={childIdx} className="sidebar__subitem">
                                                                     {childText}

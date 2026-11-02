@@ -7,7 +7,7 @@ import "./MainLayout.css";
 
 export default function MainLayout({ children }) {
     const [activePage, setActivePage] = useState("Dashboard");
-    const [reduce, setReduce] = useState(false);
+    const [reduce, setReduce] = useState(true);
     const [darkMode, setDarkMode] = useState(true);
 
     const handleToggleSidebar = () => {
