@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import "./Sidebar.css";
 import { FaAngleDown, } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
-import { sidebarMenuItems, sidebarSections } from "../../assets/data/Sidebar";
+import { sidebarMenuItems, sidebarSections } from "@/assets/data/Sidebar";
 
 export default function Sidebar({ activePage, onChangePage, reduce }) {
     const [openItems, setOpenItems] = useState({});
