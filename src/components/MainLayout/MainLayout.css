@@ -1,0 +1,131 @@
+.main-layout {
+    --sidebar-width: 64px;
+    --sidebar-item-size: 38px;
+    --info-width: 312px;
+
+    --font-icon: 16px;
+    --font-title: 20px;
+    --font-section: 12px;
+    --font-item: 13px;
+
+    display: flex;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    background: var(--bg-color);
+    color: var(--white);
+}
+
+.main-layout.dark {
+    --bg-color: #171717;
+    --header-bg: #171717;
+
+    --white: #f5f5f5;
+    --text-color: #a0a0a0;
+    --muted: #777777;
+
+    --hover: #252525;
+    --active: #303030;
+
+    --border: #303030;
+    --border-focus: #505050;
+
+    --input-bg: #202020;
+    --input-focus: #252525;
+
+    --dropdown-bg: #202020;
+    --avatar-bg: #343434;
+
+    --scrollbar: #383838;
+    --scrollbar-hover: #505050;
+}
+
+.main-layout.light {
+    --bg-color: #f5f6f8;
+    --header-bg: #ffffff;
+
+    --white: #202124;
+    --text-color: #666a73;
+    --muted: #9297a1;
+
+    --hover: #eceef2;
+    --active: #e3e6ec;
+
+    --border: #e5e7eb;
+    --border-focus: #aeb4c0;
+
+    --input-bg: #f4f5f7;
+    --input-focus: #ffffff;
+
+    --dropdown-bg: #ffffff;
+    --avatar-bg: #e8eaf0;
+
+    --scrollbar: #d1d5dc;
+    --scrollbar-hover: #aeb4c0;
+}
+
+.main-layout__content {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: auto;
+
+    background: var(--bg-color);
+    color: var(--white);
+}
+
+.page-content {
+    flex: 1;
+    min-height: 0;
+
+    padding: 28px;
+
+    overflow-y: auto;
+
+    color: var(--white);
+    background: var(--bg-color);
+}
+
+.main-layout *,
+.main-layout *::before,
+.main-layout *::after {
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .main-layout {
+        --sidebar-width: 48px;
+        --sidebar-item-size: 34px;
+        --info-width: 260px;
+
+        --font-title: 18px;
+        --font-section: 14px;
+        --font-item: 12px;
+    }
+
+    .page-content {
+        padding: 16px;
+    }
+}
